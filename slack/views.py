@@ -30,7 +30,8 @@ def meme():
         return memegen.error()
 
     if text[:9] == "templates":
-        return memegen.list_templates()
+        return "`hola` k ase?"
+        # return memegen.list_templates()
 
     template, top, bottom = parse_text_into_params(text)
 
