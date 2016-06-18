@@ -16,8 +16,9 @@ class Memegen:
 
         for key, value in response.items():
             name = value.replace(self.BASE_URL + "/templates/", "")
+            sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
             description = key
-            data.append((name, description))
+            data.append((name, description, sample))
 
         data.sort(key=lambda tup: tup[0])
         return data
@@ -28,7 +29,7 @@ class Memegen:
         help = ""
 
         for template in templates:
-            help += "`{0}` {1}\n".format(template[0], template[1])
+            help += "`{0}` {1} {2}\n".format(template[0], template[1], template[2])
 
         return help
 
