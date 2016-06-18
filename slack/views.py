@@ -30,7 +30,7 @@ def meme():
         return memegen.error()
 
     if text[:9] == "templates":
-        return "`hola` k ase?"
+        return '{ "text": "`hola` k ase?", "attachments": [{"image_url": "http://memegen.link/tenguy/your-text/goes-here.jpg", "thumb_url": "http://memegen.link/tenguy/your/goes.jpg"}]'
         # return memegen.list_templates()
 
     template, top, bottom = parse_text_into_params(text)
