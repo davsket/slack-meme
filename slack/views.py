@@ -41,7 +41,7 @@ def meme():
     elif image_exists(template):
         meme_url = memegen.build_url("custom", top, bottom, template)
     elif get_shortcut(template) and image_exists(get_shortcut(template)):
-        meme_url = memegen.build_url("custom", top, bottom, template)
+        meme_url = memegen.build_url("custom", top, bottom, get_shortcut(template))
     else:
         return memegen.error()
 
