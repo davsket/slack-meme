@@ -34,6 +34,8 @@ def meme():
 
     template, top, bottom = parse_text_into_params(text)
 
+    print template
+
     valid_templates = [x[0] for x in memegen.get_templates()]
 
     if template in valid_templates:
