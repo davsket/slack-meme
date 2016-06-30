@@ -27,8 +27,8 @@ class Memegen:
             sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
             description = key
             data.append((name, description, sample))
-        for key, value in shorcuts:
-            name = key
+        for key, value in shorcuts.iteritems():
+            name = "custom: " + key
             sample = value
             description = "Monoku custom meme"
             data.append((name, description, sample))

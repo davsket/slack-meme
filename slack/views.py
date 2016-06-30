@@ -22,7 +22,7 @@ def meme():
     text = request.args["text"]
     channel_id = request.args["channel_id"]
     user_id = request.args["user_id"]
-
+    
     if token != slack.SLASH_COMMAND_TOKEN:
         return "Unauthorized."
 
@@ -31,17 +31,13 @@ def meme():
 
     if text[:9] == "templates":
         return memegen.list_templates()
-
+    
     template, top, bottom = parse_text_into_params(text)
 
-    print template
-
     valid_templates = [x[0] for x in memegen.get_templates()]
-
     if template in valid_templates:
         meme_url = memegen.build_url(template, top, bottom)
     elif get_shortcut(template):
-        print 'Found the shortcut!'
         meme_url = memegen.build_url("custom", top, bottom, get_shortcut(template))
         print meme_url
     elif image_exists(template):
