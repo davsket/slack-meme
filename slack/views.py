@@ -44,6 +44,8 @@ def meme():
     else if shorcuts[template]:
         if image_exists(shorcuts[template]):
             meme_url = memegen.build_url("custom", top, bottom, template)
+        else:
+            return memegen.error()
     else:
         return memegen.error()
 
