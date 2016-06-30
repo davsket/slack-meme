@@ -10,7 +10,7 @@ shorcuts = {
 }
 
 def get_shortcut(key):
-    return shorcuts[key]
+    return shorcuts.get(key, None)
 
 class Memegen:
 
