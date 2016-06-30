@@ -39,7 +39,9 @@ def meme():
     if template in valid_templates:
         meme_url = memegen.build_url(template, top, bottom)
     elif get_shortcut(template):
+        print 'Found the shortcut!'
         meme_url = memegen.build_url("custom", top, bottom, get_shortcut(template))
+        print meme_url
     elif image_exists(template):
         meme_url = memegen.build_url("custom", top, bottom, template)
     else:
