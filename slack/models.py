@@ -5,7 +5,8 @@ import requests
 
 
 shorcuts = {
-    "chichico": "https://cldup.com/2imzWDHuva.png"
+    "chichico": "https://cldup.com/2imzWDHuva.png",
+    "fsjal": "http://i.imgur.com/meePc.jpg"
 }
 
 def get_shortcut(key):
