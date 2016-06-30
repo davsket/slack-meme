@@ -4,6 +4,13 @@ from urllib import unquote_plus, quote
 import requests
 
 
+shorcuts = {
+    "chichico": "https://cldup.com/2imzWDHuva.png"
+}
+
+def get_shortcut(key):
+    return shorcuts[key]
+
 class Memegen:
 
     def __init__(self):
@@ -18,6 +25,11 @@ class Memegen:
             name = value.replace(self.BASE_URL + "/templates/", "")
             sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
             description = key
+            data.append((name, description, sample))
+        for key, value in shorcuts:
+            name = key
+            sample = value
+            description = "Monoku custom meme"
             data.append((name, description, sample))
 
         data.sort(key=lambda tup: tup[0])
