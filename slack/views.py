@@ -35,11 +35,15 @@ def meme():
     template, top, bottom = parse_text_into_params(text)
 
     valid_templates = [x[0] for x in memegen.get_templates()]
+    shorcuts = {"chichico": "https://cldup.com/2imzWDHuva.png"}
 
     if template in valid_templates:
         meme_url = memegen.build_url(template, top, bottom)
     elif image_exists(template):
         meme_url = memegen.build_url("custom", top, bottom, template)
+    else if shorcuts[template]:
+        if image_exists(shorcuts[template]):
+            meme_url = memegen.build_url("custom", top, bottom, template)
     else:
         return memegen.error()
 
