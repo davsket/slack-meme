@@ -1,6 +1,6 @@
+import urllib
 from flask import Flask, request
 from models import Memegen, Slack, parse_text_into_params, image_exists, get_shortcut, set_shortcut
-
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -37,11 +37,14 @@ def meme():
         return memegen.list_shortcuts()
     
     if text[:6] == "create":
-        name, url, description = parse_text_into_params(text)
-        log = "name: %s  url: %s  description: %s" % (name, url, description)
-        print log
-        set_shortcut(name, url, description)
-        return log
+        command, name, url, description = parse_text_into_params(text)
+        if url:
+            url = urllib.unquote(url)
+            set_shortcut(name, url, description)
+            print "name: %s  url: %s  description: %s" % (name, url, description)
+            return "created: `/meme %s/<top>;<bottom>`" % (name)
+        else:
+            return "You need to pass name and url `/meme create;<name>;<url>;<description>`"
 
     template, top, bottom = parse_text_into_params(text)
     templates_not_shortcuts = [t[0] for t in memegen.get_templates() if not t[3]]
