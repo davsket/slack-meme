@@ -37,7 +37,8 @@ def meme():
         return memegen.list_shortcuts()
     
     if text[:6] == "create":
-        command, name, url, description = parse_text_into_params(text)
+        print text
+        name, url, description = parse_text_into_params(text)
         if url:
             url = urllib.unquote(url)
             set_shortcut(name, url, description)
