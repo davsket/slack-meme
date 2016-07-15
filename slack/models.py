@@ -65,9 +65,7 @@ class Memegen:
     def list_templates(self):
         templates = self.get_templates()
 
-        help = """----------------------------------
-*Available Templates & Shortcuts*
-----------------------------------\n"""
+        help = "*Available Templates & Shortcuts*\n"
 
         for template in templates:
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
@@ -77,9 +75,7 @@ class Memegen:
     def list_shortcuts(self):
         templates = [t for t in self.get_templates() if t[3]]
 
-        help = """---------------------
-*Available Shortcuts*
----------------------\n"""
+        help = "*Available Shortcuts*\n"
 
         for template in templates:
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
