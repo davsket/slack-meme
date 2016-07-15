@@ -3,6 +3,7 @@ from models import Memegen, Slack, parse_text_into_params, image_exists, get_sho
 
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 
 @app.route("/")

@@ -2,15 +2,23 @@ import json
 import os
 from urllib import unquote_plus, quote
 import requests
+from pymongo import MongoClient
 
+MONGODB_USER = os.environ.get("MONGODB_USER")
+MONGODB_PASS = os.environ.get("MONGODB_PASS")
+MONGODB_URI  = "mongodb://%s:%s@ds035664.mlab.com:35664/davsket-shared" % (MONGODB_USER, MONGODB_PASS)
+
+db = MongoClient(MONGODB_URI)["davsket-shared"]
+memes_collection = db.memes
 
 shorcuts = {
     "chichico": "https://cldup.com/2imzWDHuva.png",
     "fsjal": "http://i.imgur.com/meePc.jpg"
 }
 
+
 def get_shortcut(key):
-    return shorcuts.get(key, None)
+    return memes_collection.find({"name": key})
 
 class Memegen:
 
@@ -27,9 +35,9 @@ class Memegen:
             sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
             description = key
             data.append((name, description, sample))
-        for key, value in shorcuts.iteritems():
-            name = "custom: " + key
-            sample = value
+        for shortcut in memes_collection.find():
+            name = "shortcut: " + shortcut.name
+            sample = shortcut.url
             description = "Monoku custom meme"
             data.append((name, description, sample))
 
