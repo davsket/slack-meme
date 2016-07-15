@@ -11,12 +11,6 @@ MONGODB_URI  = "mongodb://%s:%s@ds035664.mlab.com:35664/davsket-shared" % (MONGO
 db = MongoClient(MONGODB_URI)["davsket-shared"]
 memes_collection = db.memes
 
-shorcuts = {
-    "chichico": "https://cldup.com/2imzWDHuva.png",
-    "fsjal": "http://i.imgur.com/meePc.jpg"
-}
-
-
 def get_shortcut(name):
     memes = memes_collection.find({"name": name})
     for meme in memes:
@@ -71,7 +65,9 @@ class Memegen:
     def list_templates(self):
         templates = self.get_templates()
 
-        help = ""
+        help = """----------------------------------
+*Available Templates & Shortcuts*\n
+----------------------------------"""
 
         for template in templates:
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
@@ -81,7 +77,9 @@ class Memegen:
     def list_shortcuts(self):
         templates = [t for t in self.get_templates() if t[3]]
 
-        help = ""
+        help = """---------------------
+*Available Shortcuts*\n
+---------------------"""
 
         for template in templates:
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
@@ -102,10 +100,10 @@ class Memegen:
         return """ *Monoku's Slack Memmes* :monoku:
 Available commands:
 >>>
-`/meme templates` to see valid templates or provide your own as a URL.
-`/meme shortcuts` to see only the available shortcuts.
-`/meme <name>;<top-text>;<bottom-text>` to use that meme
-`/meme create;<name>;<url>;<optional-description>` to create new memes
+1. `/meme templates` to see valid templates or provide your own as a URL.
+2. `/meme shortcuts` to see only the available shortcuts.
+3. `/meme <name>;<top-text>;<bottom-text>` to use that meme
+4. `/meme create;<name>;<url>;<optional-description>` to create new memes
         """
 
 def image_exists(path):
