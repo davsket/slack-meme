@@ -43,9 +43,8 @@ def meme():
         return "Presto!"
 
     template, top, bottom = parse_text_into_params(text)
-
-    valid_templates = [x[0] for x in memegen.get_templates()]
-    templates_not_shortcuts = [t for t in valid_templates if not t[3]]
+    templates_not_shortcuts = [t for t in memegen.get_templates() if not t[3]]
+    
     if template in templates_not_shortcuts:
         meme_url = memegen.build_url(template, top, bottom)
     elif get_shortcut(template):
