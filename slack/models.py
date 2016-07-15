@@ -1,6 +1,6 @@
 import json
 import os
-from urllib import unquote, unquote_plus, quote
+from urllib import unquote_plus, quote
 import requests
 from pymongo import MongoClient
 
@@ -150,7 +150,7 @@ def parse_text_into_params(text):
         if params[0]:
             params[0] = quote(params[0].strip().replace(" ", "_").encode("utf8"))
         if params[1]:
-            params[1] = unquote(params[1])
+            params[1] = unquote_plus(params[1])
         params += [None] * (3 - len(params))
         return params[0], params[1], params[2]
     else:
