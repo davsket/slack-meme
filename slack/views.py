@@ -38,8 +38,10 @@ def meme():
     
     if text[:6] == "create":
         name, url, description = parse_text_into_params(text)
+        log = "name: %s  url: %s  description: %s" % (name, url, description)
+        print log
         set_shortcut(name, url, description)
-        return "Presto!"
+        return log
 
     template, top, bottom = parse_text_into_params(text)
     templates_not_shortcuts = [t[0] for t in memegen.get_templates() if not t[3]]
