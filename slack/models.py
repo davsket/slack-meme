@@ -95,8 +95,9 @@ class Memegen:
         return url
 
     def error(self):
-        return """ Monoku's Slack Memmes
->>> *Menu*
+        return """ *Monoku's Slack Memmes*
+*Available commands:
+>>>
 `/meme templates` to see valid templates or provide your own as a URL.
 `/meme shortcuts` to see only the available shortcuts.
 `/meme <name>;<top-text>;<bottom-text>` to use that meme
