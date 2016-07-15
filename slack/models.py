@@ -101,7 +101,7 @@ Available commands:
 `/meme templates` to see valid templates or provide your own as a URL.
 `/meme shortcuts` to see only the available shortcuts.
 `/meme <name>;<top-text>;<bottom-text>` to use that meme
-`/meme create;<name>;<url>;<optional-description>`    to create new memes
+`/meme create;<name>;<url>;<optional-description>` to create new memes
         """
 
 def image_exists(path):
