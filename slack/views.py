@@ -1,4 +1,3 @@
-import urllib
 from flask import Flask, request
 from models import Memegen, Slack, parse_text_into_params, image_exists, get_shortcut, set_shortcut
 
@@ -39,7 +38,6 @@ def meme():
     if text[:6] == "create":
         name, url, description = parse_text_into_params(text)
         if name and url:
-            url = urllib.unquote(url)
             set_shortcut(name, url, description)
             return "Success! Now you can use it with: `/meme %s;<top>;<bottom>`" % (name)
         else:

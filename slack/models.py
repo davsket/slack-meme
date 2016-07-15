@@ -147,10 +147,10 @@ def parse_text_into_params(text):
     del params[0]
 
     if template == "create":
-        params = [x.strip() for x in params]
-        params = [x.replace(" ", "_") for x in params]
-        params = [quote(x.encode("utf8")) for x in params]
-
+        if params[0]:
+            quote(params[0].strip().replace(" ", "_").encode("utf8"))
+        if params[1]
+            url = unquote_plus(url)
         params += [None] * (3 - len(params))
         return params[0], params[1], params[2]
     else:
