@@ -95,7 +95,7 @@ class Memegen:
         return url
 
     def error(self):
-        return """>>>
+        return """
         **Commands**
         `/meme templates` to see valid templates or provide your own as a URL.
         `/meme shortcuts` to see only the available shortcuts.
