@@ -37,15 +37,13 @@ def meme():
         return memegen.list_shortcuts()
     
     if text[:6] == "create":
-        print text
         name, url, description = parse_text_into_params(text)
-        if url:
+        if name and url:
             url = urllib.unquote(url)
             set_shortcut(name, url, description)
-            print "name: %s  url: %s  description: %s" % (name, url, description)
-            return "created: `/meme %s/<top>;<bottom>`" % (name)
+            return "Success! Now you can use it with: `/meme %s;<top>;<bottom>`" % (name)
         else:
-            return "You need to pass name and url `/meme create;<name>;<url>;<description>`"
+            return "You need to pass name and url at least to create a shortcut: `/meme create;<name>;<url>;<description>`"
 
     template, top, bottom = parse_text_into_params(text)
     templates_not_shortcuts = [t[0] for t in memegen.get_templates() if not t[3]]
