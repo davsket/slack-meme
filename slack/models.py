@@ -74,6 +74,16 @@ class Memegen:
 
         return help
 
+    def list_shortcuts(self):
+        templates = [t for t in self.get_templates() if t[3]]
+
+        help = ""
+
+        for template in templates:
+            help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
+
+        return help
+
     def build_url(self, template, top, bottom, alt=None):
         path = "/{0}/{1}/{2}.jpg".format(template, top or '_', bottom or '_')
 

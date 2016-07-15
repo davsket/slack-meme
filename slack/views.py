@@ -34,8 +34,7 @@ def meme():
         return memegen.list_templates()
 
     if text[:9] == "shortcuts":
-        shortcuts = [t for t in memegen.get_templates() if t[3]]
-        return shortcuts
+        return memegen.list_shortcuts()
     
     if text[:6] == "create":
         name, url, description = parse_text_into_params(text)
@@ -43,7 +42,7 @@ def meme():
         return "Presto!"
 
     template, top, bottom = parse_text_into_params(text)
-    templates_not_shortcuts = [t for t in memegen.get_templates() if not t[3]]
+    templates_not_shortcuts = [t[0] for t in memegen.get_templates() if not t[3]]
     
     if template in templates_not_shortcuts:
         meme_url = memegen.build_url(template, top, bottom)
