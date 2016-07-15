@@ -18,8 +18,8 @@ shorcuts = {
 
 
 def get_shortcut(key):
-    meme = memes_collection.find({"name": key})
-    for meme in cursor:
+    memes = memes_collection.find({"name": key})
+    for meme in memes:
         return meme["url"]
     return None
 
