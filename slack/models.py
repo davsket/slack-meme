@@ -58,7 +58,7 @@ class Memegen:
             is_shortcut = True
             name = "shortcut: " + shortcut["name"]
             sample = shortcut["url"]
-            description = shortcut["description"] if "description" in shortcut else "Shortcut template"
+            description = shortcut["description"] if ("description" in shortcut) and shortcut["description"] else "Shortcut template"
             data.append((name, description, sample, is_shortcut))
 
         data.sort(key=lambda tup: tup[0])
