@@ -25,10 +25,14 @@ def get_shortcut(name):
 
 def set_shortcut(name, url, description):
     memes = memes_collection.find({"name": name})
-    for meme in memes:
-        meme.update({
-            "url": url,
-            "description": description
+    if memes.count() > 0:
+        memes.update_one(
+        { "name": name },
+        {
+            "$set": {
+                "url": url,
+                "description": description
+            }
         })
         return meme
     meme = memes_collection.insert_one({
