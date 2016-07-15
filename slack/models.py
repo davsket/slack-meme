@@ -95,7 +95,13 @@ class Memegen:
         return url
 
     def error(self):
-        return "That template doesn't exist. Type `/meme templates` to see valid templates or provide your own as a URL."
+        return """>>>
+        **Commands**
+        `/meme templates` to see valid templates or provide your own as a URL.
+        `/meme shortcuts` to see only the available shortcuts.
+        `/meme <name>;<top-text>;<bottom-text>` to use that meme
+        `/meme create;<name>;<url>;<optional-description>`    to create new memes
+        """
 
 def image_exists(path):
     if path.split("://")[0] not in ["http", "https"]:
