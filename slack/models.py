@@ -17,11 +17,26 @@ shorcuts = {
 }
 
 
-def get_shortcut(key):
-    memes = memes_collection.find({"name": key})
+def get_shortcut(name):
+    memes = memes_collection.find({"name": name})
     for meme in memes:
         return meme["url"]
     return None
+
+def set_shortcut(name, url, description):
+    memes = memes_collection.find({"name": name})
+    for meme in memes:
+        meme.update({
+            "url": url,
+            "description": description
+        })
+        return meme
+    meme = memes_collection.insert_one({
+        "name": name,
+        "url": url,
+        "description": description
+    })
+    return meme
 
 class Memegen:
 
@@ -37,12 +52,14 @@ class Memegen:
             name = value.replace(self.BASE_URL + "/templates/", "")
             sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
             description = key
-            data.append((name, description, sample))
+            is_shortcut = False
+            data.append((name, description, sample, is_shortcut))
         for shortcut in memes_collection.find():
+            is_shortcut = True
             name = "shortcut: " + shortcut["name"]
             sample = shortcut["url"]
-            description = "Monoku custom meme"
-            data.append((name, description, sample))
+            description = shortcut["description"] or "Shortcut template"
+            data.append((name, description, sample, is_shortcut))
 
         data.sort(key=lambda tup: tup[0])
         return data
@@ -53,7 +70,7 @@ class Memegen:
         help = ""
 
         for template in templates:
-            help += "`{0}` <{2}|{1}>\n".format(template[0], template[1], template[2])
+            help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
 
         return help
 

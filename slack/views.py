@@ -1,5 +1,5 @@
 from flask import Flask, request
-from models import Memegen, Slack, parse_text_into_params, image_exists, get_shortcut
+from models import Memegen, Slack, parse_text_into_params, image_exists, get_shortcut, set_shortcut
 
 
 app = Flask(__name__)
@@ -32,11 +32,22 @@ def meme():
 
     if text[:9] == "templates":
         return memegen.list_templates()
+
+    if text[:9] == "shortcuts":
+        valid_templates = [x[0] for x in memegen.get_templates()]
+        shortcuts = [t for t in valid_templates if t[3]]
+        return shortcuts
     
+    if text[:6] == "create":
+        name, url, description = parse_text_into_params(text)
+        set_shortcut(name, url, description)
+        return "Presto!"
+
     template, top, bottom = parse_text_into_params(text)
 
     valid_templates = [x[0] for x in memegen.get_templates()]
-    if template in valid_templates:
+    templates_not_shortcuts = [t for t in valid_templates if not t[3]]
+    if template in templates_not_shortcuts:
         meme_url = memegen.build_url(template, top, bottom)
     elif get_shortcut(template):
         meme_url = memegen.build_url("custom", top, bottom, get_shortcut(template))
