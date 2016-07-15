@@ -36,8 +36,8 @@ class Memegen:
             description = key
             data.append((name, description, sample))
         for shortcut in memes_collection.find():
-            name = "shortcut: " + shortcut.name
-            sample = shortcut.url
+            name = "shortcut: " + shortcut["name"]
+            sample = shortcut["url"]
             description = "Monoku custom meme"
             data.append((name, description, sample))
 
