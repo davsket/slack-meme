@@ -57,9 +57,10 @@ class Memegen:
             description = key
             is_shortcut = False
             data.append((name, description, sample, is_shortcut))
+
         for shortcut in memes_collection.find():
             is_shortcut = True
-            name = "shortcut: " + shortcut["name"]
+            name = shortcut["name"]
             sample = shortcut["url"]
             description = shortcut["description"] if ("description" in shortcut) and shortcut["description"] else "Shortcut template"
             data.append((name, description, sample, is_shortcut))
