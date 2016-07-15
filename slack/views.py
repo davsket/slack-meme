@@ -34,8 +34,7 @@ def meme():
         return memegen.list_templates()
 
     if text[:9] == "shortcuts":
-        valid_templates = [x[0] for x in memegen.get_templates()]
-        shortcuts = [t for t in valid_templates if t[3]]
+        shortcuts = [t for t in memegen.get_templates() if t[3]]
         return shortcuts
     
     if text[:6] == "create":
