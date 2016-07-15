@@ -96,7 +96,7 @@ class Memegen:
 
     def error(self):
         return """
-        **Commands**
+        \*\*Commands\*\*
         `/meme templates` to see valid templates or provide your own as a URL.
         `/meme shortcuts` to see only the available shortcuts.
         `/meme <name>;<top-text>;<bottom-text>` to use that meme
