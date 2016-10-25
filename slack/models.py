@@ -46,8 +46,8 @@ class Memegen:
         data = []
 
         for key, value in response.items():
-            name = value.replace(self.BASE_URL + "/templates/", "")
-            sample = value.replace("/templates", "") + "/your-text/goes-here.jpg"
+            name = value.replace(self.BASE_URL + "/api/templates/", "")
+            sample = value.replace("/api/templates", "") + "/your-text/goes-here.jpg"
             description = key
             is_shortcut = False
             data.append((name, description, sample, is_shortcut))
