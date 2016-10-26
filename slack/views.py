@@ -54,6 +54,7 @@ def meme():
     elif image_exists(template):
         print template
         meme_url = memegen.build_url("custom", top, bottom, template)
+        print meme_url
     else:
         return memegen.error()
 
