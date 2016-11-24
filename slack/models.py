@@ -122,7 +122,7 @@ Available commands:
      Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom 
 *4. To Use an Image as a Meme:* `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
      Example: `/meme https://cldup.com/keFjCIj7li.png;;oie` wi use that image and place the "oie" at the bottom
-*5. To Create a new Meme (shorcut):* `/meme create;<name>;<url>;<optional-description>` :magic:
+*5. To Create a new Shorcut:* `/meme create;<name>;<url>;<optional-description>` shortcuts are memes that you can reuse with the name :magic:
 *6. To Search:* `/meme search;<text>` to search for memes with that text on name or description :fiesta_parrot:
    `/meme search;alone` will show all the memes which name or description include alone
         """
