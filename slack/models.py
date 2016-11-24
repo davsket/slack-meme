@@ -88,7 +88,7 @@ class Memegen:
         if count == 0:
             return "*No Matches For: `%s`* :julians:\n" % search
 
-        help = "*%d Matche%s For: `%s`*\n" % (count, "s" if count > 1 else "", search)
+        help = "*%d Match%s For: `%s`*\n" % (count, "es" if count > 1 else "", search)
 
         return help + results
 
