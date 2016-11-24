@@ -46,9 +46,9 @@ class Memegen:
         data = []
 
         for key, value in response.items():
-            name = value.replace(self.BASE_URL + "/api/templates/", "")
+            name = value.replace(self.BASE_URL + "/api/templates/", "").encode('ascii', 'ignore')
             sample = value.replace("/api/templates", "") + "/your-text/goes-here.jpg"
-            description = key
+            description = key.encode('ascii', 'ignore')
             is_shortcut = False
             data.append((name, description, sample, is_shortcut))
 
@@ -68,9 +68,6 @@ class Memegen:
         help = "*Available Templates & Shortcuts*\n"
 
         for template in templates:
-            template[0] = template[0].encode('ascii', 'ignore')
-            template[1] = template[1].encode('ascii', 'ignore')
-            template[2] = template[2].encode('ascii', 'ignore')
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
 
         return help
