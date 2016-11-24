@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from urllib import unquote_plus, quote
 import requests
 from pymongo import MongoClient
@@ -69,6 +70,18 @@ class Memegen:
 
         for template in templates:
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
+
+        return help
+
+    def search_templates(self, search):
+        templates = self.get_templates()
+
+        help = "*Matched search*\n"
+
+        for template in templates:
+            name, description, sample, is_shortcut = template
+            if re.search(search, name) or re.search(search, description):
+                help += "`{0}` <{2}|{1}> {3}\n".format(name, description, sample, "[shortcut]" if is_shortcut else "" )
 
         return help
 
