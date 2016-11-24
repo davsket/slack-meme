@@ -112,7 +112,9 @@ Available commands:
 1. `/meme templates` to see valid templates or provide your own as a URL.
 2. `/meme shortcuts` to see only the available shortcuts.
 3. `/meme <name>;<top-text>;<bottom-text>` to use that meme
-4. `/meme create;<name>;<url>;<optional-description>` to create new memes
+4. `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
+5. `/meme create;<name>;<url>;<optional-description>` to create new memes :magic:
+6. `/meme search;<text>` to search for memes with that text on name or description :parrot:
         """
 
 def image_exists(path):
