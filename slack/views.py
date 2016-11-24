@@ -22,9 +22,6 @@ def meme():
     text = request.args["text"]
     channel_id = request.args["channel_id"]
     user_id = request.args["user_id"]
-
-    print "HERE begin"
-    print text[:9]
     
     if token != slack.SLASH_COMMAND_TOKEN:
         return "Unauthorized."
@@ -35,7 +32,7 @@ def meme():
     if text[:9] == "templates":
         return memegen.list_templates()
 
-    if text[:9] == "search":
+    if text[:6] == "search":
         print "HERE on search"
         name = parse_text_into_params(text)[0]
         print name
