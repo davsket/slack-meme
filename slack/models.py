@@ -83,7 +83,7 @@ class Memegen:
             name, description, sample, is_shortcut = template
             if re.search(search, name, re.IGNORECASE) or re.search(search, description, re.IGNORECASE):
                 results += "`{0}` <{2}|{1}> {3}\n".format(name, description, sample, "[shortcut]" if is_shortcut else "" )
-                count++
+                count += 1
 
         if count == 0:
             return "*No Matches For: `%s`* :julians:\n" % search
