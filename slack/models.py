@@ -116,14 +116,14 @@ class Memegen:
         return """ *Monoku's Slack Memmes* :monoku:
 Available commands:
 >>>
-1. `/meme templates` to see valid templates or provide your own as a URL.
-2. `/meme shortcuts` to see only the customized memes
-3. `/meme <name>;<top-text>;<bottom-text>` to use that meme
-   Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom 
-4. `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
-   Example: `/meme https://cldup.com/keFjCIj7li.png;;oie` wi use that image and place the "oie" at the bottom
-5. `/meme create;<name>;<url>;<optional-description>` to create new memes :magic:
-6. `/meme search;<text>` to search for memes with that text on name or description :fiesta_parrot:
+*1. To List Templates:* `/meme templates` to list all the valid templates.
+*2. To List Shortcuts:* `/meme shortcuts` to list only the customized ones.
+*3. To Generate a Meme:* `/meme <name>;<top-text>;<bottom-text>`
+     Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom 
+*4. To Use an Image as a Meme:* `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
+     Example: `/meme https://cldup.com/keFjCIj7li.png;;oie` wi use that image and place the "oie" at the bottom
+*5. To Create a new Meme (shorcut):* `/meme create;<name>;<url>;<optional-description>` :magic:
+*6. To Search:* `/meme search;<text>` to search for memes with that text on name or description :fiesta_parrot:
    `/meme search;alone` will show all the memes which name or description include alone
         """
 
