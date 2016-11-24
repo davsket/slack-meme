@@ -33,10 +33,7 @@ def meme():
         return memegen.list_templates()
 
     if text[:6] == "search":
-        print "HERE on search"
-        print parse_text_into_params(text)
-        cmd, search = parse_text_into_params(text)
-        print search
+        command, search, ignore = parse_text_into_params(text)
         return memegen.search_templates(search)
 
     if text[:9] == "shortcuts":
