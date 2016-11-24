@@ -77,13 +77,17 @@ class Memegen:
         templates = self.get_templates()
 
         help = "*Matched search for: %s*\n" % search
+        results = ""
 
         for template in templates:
             name, description, sample, is_shortcut = template
             if re.search(search, name, re.IGNORECASE) or re.search(search, description, re.IGNORECASE):
-                help += "`{0}` <{2}|{1}> {3}\n".format(name, description, sample, "[shortcut]" if is_shortcut else "" )
+                results += "`{0}` <{2}|{1}> {3}\n".format(name, description, sample, "[shortcut]" if is_shortcut else "" )
 
-        return help
+        if results == "":
+            return "*No Matches For: `%s`* :julians:\n" % search
+
+        return help + results
 
     def list_shortcuts(self):
         templates = [t for t in self.get_templates() if t[3]]
@@ -110,11 +114,14 @@ class Memegen:
 Available commands:
 >>>
 1. `/meme templates` to see valid templates or provide your own as a URL.
-2. `/meme shortcuts` to see only the available shortcuts.
+2. `/meme shortcuts` to see only the customized memes
 3. `/meme <name>;<top-text>;<bottom-text>` to use that meme
+   Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom 
 4. `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
+   Example: `/meme https://cldup.com/keFjCIj7li.png;;oie` wi use that image and place the "oie" at the bottom
 5. `/meme create;<name>;<url>;<optional-description>` to create new memes :magic:
-6. `/meme search;<text>` to search for memes with that text on name or description :parrot:
+6. `/meme search;<text>` to search for memes with that text on name or description :fiesta_parrot:
+   `/meme search;alone` will show all the memes which name or description include alone
         """
 
 def image_exists(path):
