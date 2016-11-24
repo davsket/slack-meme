@@ -22,6 +22,9 @@ def meme():
     text = request.args["text"]
     channel_id = request.args["channel_id"]
     user_id = request.args["user_id"]
+
+    print "HERE begin"
+    print text[:9]
     
     if token != slack.SLASH_COMMAND_TOKEN:
         return "Unauthorized."
