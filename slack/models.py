@@ -76,16 +76,19 @@ class Memegen:
     def search_templates(self, search):
         templates = self.get_templates()
 
-        help = "*Matched search for: %s*\n" % search
         results = ""
+        count = 0
 
         for template in templates:
             name, description, sample, is_shortcut = template
             if re.search(search, name, re.IGNORECASE) or re.search(search, description, re.IGNORECASE):
                 results += "`{0}` <{2}|{1}> {3}\n".format(name, description, sample, "[shortcut]" if is_shortcut else "" )
+                count++
 
-        if results == "":
+        if count == 0:
             return "*No Matches For: `%s`* :julians:\n" % search
+
+        help = "*%d Matche%s For: `%s`*\n" % (count, "s" if count > 1 else "", search)
 
         return help + results
 
