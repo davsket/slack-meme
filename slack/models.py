@@ -68,6 +68,9 @@ class Memegen:
         help = "*Available Templates & Shortcuts*\n"
 
         for template in templates:
+            template[0] = template[0].encode('ascii', 'ignore')
+            template[1] = template[1].encode('ascii', 'ignore')
+            template[2] = template[2].encode('ascii', 'ignore')
             help += "`{0}` <{2}|{1}> {3}\n".format(template[0], template[1], template[2], "[shortcut]" if template[3] else "" )
 
         return help
