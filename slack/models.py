@@ -6,8 +6,8 @@ import requests
 from pymongo import MongoClient
 
 MONGODB_URI  = os.environ.get("MONGODB_URI")
-DB_NAME  = os.environ.get("MONGODB_URI")
-DB_COLLECTION  = os.environ.get("MONGODB_URI")
+DB_NAME  = os.environ.get("DB_NAME")
+DB_COLLECTION  = os.environ.get("DB_COLLECTION")
 
 db = MongoClient(MONGODB_URI)[DB_NAME]
 memes_collection = db[DB_COLLECTION]
