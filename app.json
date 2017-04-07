@@ -15,6 +15,18 @@
     "SLACK_SLASH_COMMAND_TOKEN": {
       "description": "The token of your Slash Command.",
       "value": "CHANGE_ME"
+    },
+    "MONGODB_URI": {
+      "description": "Your MongoDB URI, includes: user, password and dbname.",
+      "value": "CHANGE_ME"
+    },
+    "DB_NAME": {
+      "description": "Your MongoDB database name.",
+      "value": "CHANGE_ME"
+    },
+    "DB_COLLECTION": {
+      "description": "The collection name.",
+      "value": "CHANGE_ME"
     }
   }
 }
