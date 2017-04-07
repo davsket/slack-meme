@@ -71,12 +71,12 @@ a **Webhook URL** field. This is your `SLACK_WEBHOOK_URL`.
 [Create a new Slash Command](https://my.slack.com/services/new/slash-commands). Call it `/meme`. After creating, you'll see a **Token** field. This is your `SLACK_SLASH_COMMAND_TOKEN`. Keep this page open, as you'll need to configure the Slash Command further after deploying your Heroku App.
 
 ### MongoDB
-You need to create a MongoDB database, you can use [mLab](https://mlab.com). You will need to define your `MONGODB_URI` with the format: `mongodb://USER_NAME:PASSWORD@DB_URL:PORT/DB_NAME`
+You need to create a MongoDB database, you can use [mLab](https://mlab.com). You will need to define your `MONGODB_URI` with the format: `mongodb://USER_NAME:PASSWORD@DB_URL:PORT/DB_NAME`, the `DB_NAME` and `DB_COLLECTION` (you should create a collection for this project)
 
 ### Deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Paste your `SLACK_API_TOKEN`, `SLACK_WEBHOOK_URL`, `SLACK_SLASH_COMMAND_TOKEN` , and `MONGODB_URI` values into the appropriate config variables.
+Paste your `SLACK_API_TOKEN`, `SLACK_WEBHOOK_URL`, `SLACK_SLASH_COMMAND_TOKEN` , `MONGODB_URI`, `DB_NAME` and `DB_COLLECTION` values into the appropriate config variables.
 
 <img src="http://i.imgur.com/reNOSXe.png">
 

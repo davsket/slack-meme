@@ -5,12 +5,12 @@ from urllib import unquote_plus, quote
 import requests
 from pymongo import MongoClient
 
-MONGODB_USER = os.environ.get("MONGODB_USER")
-MONGODB_PASS = os.environ.get("MONGODB_PASS")
-MONGODB_URI  = "mongodb://%s:%s@ds035664.mlab.com:35664/davsket-shared" % (MONGODB_USER, MONGODB_PASS)
+MONGODB_URI  = os.environ.get("MONGODB_URI")
+DB_NAME  = os.environ.get("MONGODB_URI")
+DB_COLLECTION  = os.environ.get("MONGODB_URI")
 
-db = MongoClient(MONGODB_URI)["davsket-shared"]
-memes_collection = db.memes
+db = MongoClient(MONGODB_URI)[DB_NAME]
+memes_collection = db[DB_COLLECTION]
 
 def get_shortcut(name):
     memes = memes_collection.find({"name": name})
