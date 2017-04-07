@@ -1,3 +1,8 @@
+> WARN: This fork includes:
+> - The ability to create new  memes
+> - Better help command
+> - Meme search
+
 # slack-meme
 Post memes to any of your Slack channels with a slash command.
 
@@ -19,6 +24,27 @@ Use your own image by passing its URL as the template:
 `/meme http://nicolewhite.github.io/static/me.jpg; hello; my name is nicole;`
 
 <img src="http://i.imgur.com/OVhBlmt.png">
+
+### Custom Named Templates
+Use your own image by passing its URL as the template and give the name and description:
+
+`/meme create;<name>;<url>;<optional-description>`
+
+For example:
+`/meme create; custom-meme;http://nicolewhite.github.io/static/me.jpg; my first custom meme`
+
+Now you should be able to use your new meme as:
+`/meme custom-meme; OMG; it works!`
+
+### Meme Search
+You can search by name or description:
+
+`/meme search;<query>`
+
+For example:
+`/meme search; alien`
+
+It should answer to you the memes which name or description includes the word `alien`
 
 ### Preview
 
@@ -44,10 +70,13 @@ a **Webhook URL** field. This is your `SLACK_WEBHOOK_URL`.
 
 [Create a new Slash Command](https://my.slack.com/services/new/slash-commands). Call it `/meme`. After creating, you'll see a **Token** field. This is your `SLACK_SLASH_COMMAND_TOKEN`. Keep this page open, as you'll need to configure the Slash Command further after deploying your Heroku App.
 
+### MongoDB
+You need to create a MongoDB database, you can use [mLab](https://mlab.com). You will need to define your `MONGODB_URI` with the format: `mongodb://USER_NAME:PASSWORD@DB_URL:PORT/DB_NAME`
+
 ### Deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Paste your `SLACK_API_TOKEN`, `SLACK_WEBHOOK_URL`, and `SLACK_SLASH_COMMAND_TOKEN` values into the appropriate config variables.
+Paste your `SLACK_API_TOKEN`, `SLACK_WEBHOOK_URL`, `SLACK_SLASH_COMMAND_TOKEN` , and `MONGODB_URI` values into the appropriate config variables.
 
 <img src="http://i.imgur.com/reNOSXe.png">
 

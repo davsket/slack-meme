@@ -119,7 +119,7 @@ Available commands:
 *1. To List Templates:* `/meme templates` to list all the valid templates.
 *2. To List Shortcuts:* `/meme shortcuts` to list only the customized ones.
 *3. To Generate a Meme:* `/meme <name>;<top-text>;<bottom-text>`
-     Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom 
+     Example: `/meme aag;;aliens` will use the akward aliens guy meme with "aliens" text on the bottom
 *4. To Use an Image as a Meme:* `/meme <image-url>;<top-text>;<bottom-text>` to use an image as a meme :snoop_dancing:
      Example: `/meme https://cldup.com/keFjCIj7li.png;;oie` wi use that image and place the "oie" at the bottom
 *5. To Create a new Shorcut:* `/meme create;<name>;<url>;<optional-description>` shortcuts are memes that you can reuse with the name :magic:
@@ -165,7 +165,7 @@ def parse_text_into_params(text):
 
     template = params[0].strip()
     del params[0]
-    
+
     if template == "create":
         params = [x.strip() for x in params]
         if params[0]:
